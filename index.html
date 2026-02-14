@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para ti ❤️</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <style>
+        body {
+            /* Fondo degradado animado */
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #ffd1ff, #fbc2eb);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            font-family: 'Nunito', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #fff;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .carta-amor {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            padding: 3rem;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: #d63384;
+            text-shadow: 2px 2px 0px #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            color: #fff;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .frase-box {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #c2185b;
+            font-size: 1.3rem;
+            font-weight: bold;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Iconos animados */
+        .icon-container {
+            font-size: 5rem;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .float-icon {
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2));
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .float-icon:hover {
+            transform: scale(1.2) !important;
+        }
+
+        .float-icon:nth-child(2) { animation-delay: 0.5s; }
+        .float-icon:nth-child(3) { animation-delay: 1s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .btn-love {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(255, 75, 43, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            z-index: 100;
+            position: relative;
+        }
+
+        .btn-love:active {
+            transform: scale(0.95);
+        }
+
+        .btn-love:hover {
+            box-shadow: 0 15px 25px rgba(255, 75, 43, 0.6);
+            transform: translateY(-3px);
+        }
+
+        /* Elementos flotantes de fondo */
+        .bg-floating {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.6;
+            animation: flyUp linear infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes flyUp {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="hero-container">
+        <div class="carta-amor animate__animated animate__zoomInDown">
+            
+            <h1 class="animate__animated animate__pulse animate__infinite">¡Feliz San Valentín!</h1>
+            <h2 class="mb-3">Para: <span style="color: #ffeb3b; text-decoration: underline;">Mi Niña</span></h2>
+            
+            <div class="icon-container">
+                <div class="float-icon">🧸</div> <div class="float-icon">💖</div> <div class="float-icon">🌹</div> </div>
+
+            <div class="frase-box shadow-sm" id="cajaFrase">
+                "Eres la casualidad más bonita de mi vida."
+            </div>
+
+            <button class="btn btn-love mt-3" onclick="accionAmor()">
+                ¡Sorpréndeme! 💘
+            </button>
+            
+            <div class="mt-4 text-white-50 small">
+                Hecho con mucho amor para ti
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Array de frases bonitas
+        const frases = [
+            "Contigo cada día es San Valentín. 🌹",
+            "Mi lugar favorito es a tu lado. 💑",
+            "Gracias por hacerme sonreír sin razón. ✨",
+            "Te quiero más que ayer, pero menos que mañana. 📈",
+            "Eres mi notificación favorita. 📱❤️",
+            "Tú haces que mi corazón haga *bop bop*. 💓",
+            "Mi mundo es más bonito porque tú estás en él. 🌍"
+        ];
+
+        // 2. Función Principal del Botón
+        function accionAmor() {
+            // A. Cambiar frase aleatoriamente
+            const caja = document.getElementById('cajaFrase');
+            // Efecto de desvanecimiento
+            caja.style.opacity = 0;
+            
+            setTimeout(() => {
+                const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+                caja.innerText = fraseAleatoria;
+                caja.style.opacity = 1;
+            }, 300);
+
+            // B. Explosión de Confetti (Librería canvas-confetti)
+            lanzarConfetti();
+        }
+
+        // 3. Configuración del Confetti
+        function lanzarConfetti() {
+            var duration = 2 * 1000;
+            var end = Date.now() + duration;
+
+            (function frame() {
+                // Lanza confetti y corazones
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    shapes: ['heart'],
+                    colors: ['#ff0000', '#ff69b4', '#ffffff']
+                });
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    shapes: ['heart'],
+                    colors: ['#ff0000', '#ff69b4', '#ffffff']
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }
+
+        // 4. Generador de Fondo Animado (Lluvia de emojis constante)
+        function crearFondoAnimado() {
+            const emojis = ['❤️', '🧸', '🌹', '✨', '💕', '💌', '🍬'];
+            const el = document.createElement('div');
+            el.classList.add('bg-floating');
+            el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            // Posición aleatoria horizontal
+            el.style.left = Math.random() * 100 + 'vw';
+            // Tamaño aleatorio
+            el.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+            // Duración aleatoria
+            el.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            
+            document.body.appendChild(el);
+
+            // Eliminar elemento al terminar animación para no saturar memoria
+            setTimeout(() => {
+                el.remove();
+            }, 10000);
+        }
+
+        // Crear un elemento de fondo cada 500ms
+        setInterval(crearFondoAnimado, 500);
+
+    </script>
+</body>
+</html>
